@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/zquestz/omniauth-google-oauth2.git
+  revision: f6f26d9645a6fcf55192497ecedeb5ed5826c7c5
+  specs:
+    omniauth-google-oauth2 (0.1.17)
+      omniauth (~> 1.0)
+      omniauth-oauth2
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -30,6 +38,10 @@ GEM
       multi_json (~> 1.0)
     addressable (2.3.4)
     arel (3.0.2)
+    autoparse (0.3.3)
+      addressable (>= 2.3.1)
+      extlib (>= 0.9.15)
+      multi_json (>= 1.0.0)
     better_errors (0.8.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -69,18 +81,32 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    extlib (0.9.16)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
+    faraday (0.8.7)
+      multipart-post (~> 1.1)
     figaro (0.6.3)
       bundler (~> 1.0)
       rails (>= 3, < 5)
     gherkin (2.12.0)
       multi_json (~> 1.3)
+    google-api-client (0.6.3)
+      addressable (>= 2.3.2)
+      autoparse (>= 0.3.3)
+      extlib (>= 0.9.15)
+      faraday (~> 0.8.4)
+      jwt (>= 0.1.5)
+      launchy (>= 2.1.1)
+      multi_json (>= 1.0.0)
+      signet (>= 0.4.4)
+      uuidtools (>= 2.1.0)
     hashie (2.0.4)
     hike (1.2.2)
+    httpauth (0.2.0)
     hub (1.10.6)
     i18n (0.6.1)
     journey (1.0.4)
@@ -88,6 +114,8 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.7.7)
+    jwt (0.1.8)
+      multi_json (>= 1.5)
     launchy (2.3.0)
       addressable (~> 2.3)
     libv8 (3.11.8.17)
@@ -107,13 +135,24 @@ GEM
       rspec (>= 2.9)
     moped (1.4.5)
     multi_json (1.7.2)
+    multipart-post (1.2.0)
+    nifty-generators (0.4.6)
     nokogiri (1.5.9)
     oauth (0.4.7)
+    oauth2 (0.8.1)
+      faraday (~> 0.8)
+      httpauth (~> 0.1)
+      jwt (~> 0.1.4)
+      multi_json (~> 1.0)
+      rack (~> 1.2)
     omniauth (1.1.4)
       hashie (>= 1.2, < 3)
       rack
     omniauth-oauth (1.0.1)
       oauth
+      omniauth (~> 1.0)
+    omniauth-oauth2 (1.1.1)
+      oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
     omniauth-twitter (0.0.16)
       multi_json (~> 1.3)
@@ -168,6 +207,11 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    signet (0.4.5)
+      addressable (>= 2.2.3)
+      faraday (~> 0.8.1)
+      jwt (>= 0.1.5)
+      multi_json (>= 1.0.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -185,6 +229,7 @@ GEM
     uglifier (2.0.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    uuidtools (2.1.4)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -201,13 +246,16 @@ DEPENDENCIES
   email_spec (>= 1.4.0)
   factory_girl_rails (>= 4.2.0)
   figaro (>= 0.6.3)
+  google-api-client
   hub (>= 1.10.2)
   jquery-rails
   launchy (>= 2.2.0)
   libv8 (>= 3.11.8)
   mongoid (>= 3.1.2)
   mongoid-rspec (>= 1.7.0)
+  nifty-generators
   omniauth (>= 1.1.3)
+  omniauth-google-oauth2!
   omniauth-twitter
   quiet_assets (>= 1.0.2)
   rails (= 3.2.13)
