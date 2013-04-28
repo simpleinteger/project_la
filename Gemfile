@@ -29,6 +29,6 @@ gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
 
 #google 
 gem 'nifty-generators'
-gem 'google-api-client', :require => 'google/api_clientauth-google-oauth2'
+gem 'google-api-client', :require => 'google/api_client'
 gem 'omniauth-google-oauth2', :git => 'https://github.com/zquestz/omniauth-google-oauth2.git'
 
