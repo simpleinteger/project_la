@@ -6,11 +6,16 @@ class SessionsController < ApplicationController
 
 
   def create
-    raise env["omniauth.auth"].to_yaml
+    #raise env["omniauth.auth"].to_yaml
+
+    @user = User.create_with_omniauth(request.env["omniauth.auth"])
+    session[:user_id] = @user.uid
+
+    redirect_to "/users/#{@user.uid}", notice: "Signed in!"
   end
 
   def destroy
-    reset_session
+    session[:user_id] = nil
     redirect_to root_url, :notice => 'Signed out!'
   end
 

@@ -1,0 +1,19 @@
+<%= form_for :event, url: add_event_path(@user) do |f| %>
+  <div class="field">
+    
+    <%= f.label :name %> 
+    <%= f.text_field :name, autofocus: :true %>
+
+    <%= f.label :priority %> 
+    <%= f.text_field :priority%>
+
+    <%= f.label :deadline %> 
+    <%= f.text_field :deadline %>
+  <br>
+
+</div>
+  <div class="actions">
+    <%=  f.submit 'Check' %>
+  </div>
+  <% end %>
+

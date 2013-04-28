@@ -1,3 +1,8 @@
-<h3>User</h3>
-<p>User: <%= @user.name %></p>
+<h3>User Page</h3>
 <p>Email: <%= @user.email if @user.email %></p>
+
+<iframe src="https://www.google.com/calendar/embed?src=<%=@username_forLink%>%40gmail.com&ctz=<%=@timeZone_forLink%>" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+<%= render 'form' %>
+<%= link_to "add_event", "/add_event/#{@user.uid}" %>
+
