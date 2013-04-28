@@ -6,19 +6,18 @@ class SessionsController < ApplicationController
 
 
   def create
-    auth = request.env["omniauth.auth"]
-    user = User.where(:provider => auth['provider'], 
-                      :uid => auth['uid'].to_s).first || User.create_with_omniauth(auth)
-# Reset the session after successful login, per
-# 2.8 Session Fixation – Countermeasures:
-# http://guides.rubyonrails.org/security.html#session-fixation-countermeasures
-    reset_session
-    session[:user_id] = user.id
-    if user.email.blank?
-      redirect_to edit_user_path(user), :alert => "Please enter your email address."
-    else
-      redirect_to root_url, :notice => 'Signed in!'
-    end
+
+  #What data comes back from OmniAuth?     
+  @auth = request.env["omniauth.auth"]
+  #Use the token from the data to request a list of calendars
+  @token = @auth["credentials"]["token"]
+  client = Google::APIClient.new
+  client.authorization.access_token = @token
+  service = client.discovered_api('calendar', 'v3')
+  @result = client.execute(
+    :api_method => service.calendar_list.list,
+    :parameters => {},
+    :headers => {'Content-Type' => 'application/json'})
 
   end
 
