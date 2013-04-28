@@ -1,2 +1,19 @@
+
+<%= @username_forLink %>
+<br>
+<%= @timeZone_forLink %>
+<br>
+<%= @calender_id %>
+<br>
+<%= debug @result2.data %>
+<br>
+<br>
+<%= debug @result3.data %>
+<br>
+<br>
+<%= debug @result4.data %>
+
+<iframe src="https://www.google.com/calendar/embed?src=<%=@username_forLink%>%40gmail.com&ctz=<%=@timeZone_forLink%>" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
 <%= debug @auth %>
 <%= debug @result.data %>
