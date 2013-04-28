@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
     :api_method => service.calendar_list.list,
     :parameters => {},
     :headers => {'Content-Type' => 'application/json'})
-
+    
   end
 
   def destroy
